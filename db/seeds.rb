@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Lawyer.destroy_all
+	location = "Los Angeles"
+    search_term = "police"
+lawyer = Lawyer.create([{
+	
+	name: Yelp.client.search("Los Angeles", {term: "police"}).businesses[1].name
+
+	
+}])
+
