@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.services {
+	font-family: apple chancery;
+	width: 500px;
+	float: left;
+	position: relative;
+	
+}
