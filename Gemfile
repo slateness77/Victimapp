@@ -14,6 +14,7 @@ gem 'rails_12factor'
 gem 'yelp'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'foundation-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
