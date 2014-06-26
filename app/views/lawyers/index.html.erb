@@ -10,33 +10,41 @@ LA City: <input type="text" name="user">
 </form> -->
 <!-- do an onlick and give the a's a class to onlick show, also dont do a string but # anchor point -->
 <div class="container">
-  <ul> 
-    <li><a href="#" class="button service" category="police">Police Departments</a></li>
-    <li><a href="#" class="button service" category="fire dept">Fire Departments</a></li>
-    <li><a href="#" class="button service" category="sheriff">Sheriff Department</a></li>
-    <li><a href="#" class="button service" category="crisis team">Crisis Team</a></li>
-    <li><a href="#" class="button service" category="victim assistance">Victim Assistance</a></li>
-    <li><a href="#" class="button service" category="ambulance">Ambulance and Paramedics</a></li>
-    <li><a href="#" class="button service" category="family justice center">Family Justice Center</a></li>
-    <li><a href="#" class="button service" category="hazardous waste disposal">Hazardous Waste Disposal</a></li>
-    <li><a href="#" class="button service" category="district attorney's office">District Attorney's Office</a></li>
-    <li><a href="#" class="button service" category="lawyer">Lawyers</a></li>
-    <li><a href="#" class="button service" category="legal services">Legal Services</a></li>
-    <li><a href="#" class="button service" category="probation department">Probation Departments</a></li>
-    <li><a href="#" class="button service" category="courts">Courts</a></li>
-    <li><a href="#" class="button service" category="crisis services">Crises Services</a></li>
-    <li><a href="#" class="button service" category="violence shelters">Violence Shelters</a></li>
-    <li><a href="#" class="button service" category="homeless shelters">Homeless Shelters</a></li>
-    <li><a href="#" class="button service" category="victim services">Victim Services</a></li>
-    <li><a href="#" class="button service" category="counseling">Therapists and Counselers</a></li>
-    <li><a href="#" class="button service" category="church">Churches</a></li>
-    <li><a href="#" class="button service" category="synagogues">Synagogues</a></li>
-    <li><a href="#" class="button service" category="temple">Temples</a></li>
-    <li><a href="#" class="button service" category="self defense class">Self Defense Class</a></li>
-    <li><a href="#" class="button service" category="funeral services & cemeteries">Funeral Services & Cemeteries</a></li>
-    <li><a href="#" class="button service" category="childe abuse">Child Abuse</a></li>
-    <li><a href="#" class="button service" category="elder abuse">Elder Abuse</a></li>
-    <li><a href="#" class="button service" category="non profit orginizations">Non Profit Orginizations</a></li>
+  <ul id="left-list"> 
+    <li><a href="#" class="button tiny service" category="police">Police Departments</a></li>
+    <li><a href="#" class="button tiny service" category="fire dept">Fire Departments</a></li>
+    <li><a href="#" class="button tiny service" category="sheriff">Sheriff Department</a></li>
+    <li><a href="#" class="button tiny service" category="crisis team">Crisis Team</a></li>
+    <li><a href="#" class="button tiny service" category="victim assistance">Victim Assistance</a></li>
+    <li><a href="#" class="button tiny service" category="ambulance">Ambulance and Paramedics</a></li>
+    <li><a href="#" class="button tiny service" category="family justice center">Family Justice Center</a></li>
+    <li><a href="#" class="button tiny service" category="hazardous waste disposal">Hazardous Waste Disposal</a></li>
+    <li><a href="#" class="button tiny service" category="district attorney's office">District Attorney's Office</a></li>
+    <li><a href="#" class="button tiny service" category="lawyer">Lawyers</a></li>
+    <li><a href="#" class="button tiny service" category="legal services">Legal Services</a></li>
+    <li><a href="#" class="button tiny service" category="probation department">Probation Departments</a></li>
+    <li><a href="#" class="button tiny service" category="courts">Courts</a></li>
+  </ul>
+    <!-- html for sidebar -->
+  <div class="mapcanvas" style='width: 800px;'>
+  <div id="sidebar_builder" style='width: 800px; height: 400px;'></div>
+  </div>
+  <div id='sidebar_container'>
+  </div>
+  <ul id="right-list">
+    <li><a href="#" class="button tiny service" category="crisis services">Crises Services</a></li>
+    <li><a href="#" class="button tiny service" category="violence shelters">Violence Shelters</a></li>
+    <li><a href="#" class="button tiny service" category="homeless shelters">Homeless Shelters</a></li>
+    <li><a href="#" class="button tiny service" category="victim services">Victim Services</a></li>
+    <li><a href="#" class="button tiny service" category="counseling">Therapists and Counselers</a></li>
+    <li><a href="#" class="button tiny service" category="church">Churches</a></li>
+    <li><a href="#" class="button tiny service" category="synagogues">Synagogues</a></li>
+    <li><a href="#" class="button tiny service" category="temple">Temples</a></li>
+    <li><a href="#" class="button tiny service" category="self defense class">Self Defense Class</a></li>
+    <li><a href="#" class="button tiny service" category="funeral services & cemeteries">Funeral Services & Cemeteries</a></li>
+    <li><a href="#" class="button tiny service" category="childe abuse">Child Abuse</a></li>
+    <li><a href="#" class="button tiny service" category="elder abuse">Elder Abuse</a></li>
+    <li><a href="#" class="button tiny service" category="non profit orginizations">Non Profit Orginizations</a></li>
   </ul>
 </div>
 
@@ -67,15 +75,6 @@ LA City: <input type="text" name="user">
 </div>
 
 
-
-
-
-<!-- html for sidebar -->
-<div class="mapcanvas" style='width: 800px;'>
-  <div id="sidebar_builder" style='width: 800px; height: 400px;'></div>
-</div>
-<div id='sidebar_container'>
-</div>
 
 
 <script type="text/javascript">
@@ -119,12 +118,23 @@ $(document).ready(function() {
       // handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
 
-      var markers
+      var markers;
+      var infowindow = new google.maps.InfoWindow({
+        content: "<h1>hello</h1>"
+      });
+      console.log(infowindow);
   $(".service").click(function(event){
     event.preventDefault;
     var category = $(this).attr("category")
     $.get("/category", {category: category}, function(response){
       markers = response.locations;
+      for (i = 0; i < markers.length; i++)
+      {
+        google.maps.event.addListener(markers[i], 'click', function(){
+          console.log("turd cupcake")
+          infowindow.open(handler.getMap(),markers[i]);
+        });
+      }
       handler.addMarkers(markers);
       handler.map.centerOn(markers[0]);
       handler.bounds.extendWith(markers);

@@ -5,7 +5,9 @@ class Lawyer < ActiveRecord::Base
 
 	validates_presence_of :name
 
-
+	def gmaps4rails_infowindow
+      "<img src=\"#{self.address}\"> #{self.name}"
+    end
 
 	
 end

@@ -18,22 +18,61 @@
 
 .services {
 	font-family: apple chancery;
-	width: 500px;
+	width: 700px;
 	float: left;
 	position: relative;
 	
 }
 
-.mapcanvas{
-	float:right;
-	margin-top: -1800px;
-	margin-right: 180px;
+h1 {
+	font-size: 5em;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px red;
 }
 
+#right-list {
+	float: right;
+	display: inline-block;
+	margin-top: -400px;
+}
+
+.mapcanvas {
+	display: inline-block;
+	margin-left: 8%;
+}
+
+#left-list {
+	float: left;
+	display: inline-block;
+	margin-left: 5%;
+}
+
+.button {
+	background-color: yellow;
+	color: black;
+	border: 3px solid black;
+	width: 50%;
+	font-weight: bold;
+}
+
+.button-font-color {
+	color: black;
+}
+
+/*.mapcanvas{
+	float:right;
+	margin-top: -1300px;
+	margin-right: 180px;
+}*/
+
 .container{
-	font-size: 5px;
+	
 }
 
 h1 {
 	text-align: center;
+}
+
+body {
+	background: url("blood.jpg")
 }
