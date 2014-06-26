@@ -4,17 +4,39 @@
 
 <h1>Services Page</h1>
 
-<form name="input" action="demo_form_action.asp" method="get">
+<!-- <form name="input" action="demo_form_action.asp" method="get">
 LA City: <input type="text" name="user">
 <input type="submit" value="Submit">
-</form>
-
-<ul>
+</form> -->
+<!-- do an onlick and give the a's a class to onlick show, also dont do a string but # anchor point -->
+<ul> 
   <li><a href="Police Departments">Police Departments</a></li>
   <li><a href="Fire Departments">Fire Departments</a></li>
+  <li><a href="Crisis Teams">Crisis Team</a></li>
+  <li><a href="Victim Assistance">Victim Assistance</a></li>
+  <li><a href="Ambulance and Paramedics">Ambulance and Paramedics</a></li>
+  <li><a href="Hazardous Waste Disposal">Hazardous Waste Disposal</a></li>
+  <li><a href="District Attorney's Office">District Attorney's Office</a></li>
+  <li><a href="Lawyers">Lawyers</a></li>
+  <li><a href="Legal Services">Legal Services</a></li>
+  <li><a href="Probation Department">Probation Department</a></li>
+  <li><a href="Courts">Courts</a></li>
+  <li><a href="Crisis Services">Crisis Services</a></li>
+  <li><a href="Domestic Violence SHelters">Domestic Violence SHelters</a></li>
+  <li><a href="Shleters">Shleters</a></li>
+  <li><a href="Victim Services">Victim Services</a></li>
+  <li><a href="Therapists and Counseling">Therapists and Counseling</a></li>
+  <li><a href="Churches">Churches</a></li>
+  <li><a href="Synagogues">Synagogues</a></li>
+  <li><a href="Temples">Temples</a></li>
+  <li><a href="Self Defense">Self Defense</a></li>
+  <li><a href="Funeral and Burial Services">Funeral and Burial Services</a></li>
+  <li><a href="Child Abuse">Child Abuse</a></li>
+  <li><a href="Elder Abuse">Elder Abuse</a></li>
+  <li><a href="Non Profit Organizations">Non Profit Organizations</a></li>
 </ul>
 
-<table border='1px'>
+<!-- <table border='1px'>
 	<tr>
 		<th>Name</th>
 		<th>Address</th>
@@ -22,7 +44,7 @@ LA City: <input type="text" name="user">
 		<th>Website</th>
 		
 	</tr>
-   
+    -->
 	 
     <tr>	
 		<td><%= @name %></td><br>
@@ -41,17 +63,9 @@ LA City: <input type="text" name="user">
     <li><%= s.phone %></li>
     <li><%= s.url %></li>
     <li><%= s.address %></li>
-    <script>
-    $(document).ready(function(){
-      var geocoder = google.maps.Geocoder;
-    geocoder.geocode({address: "<%= s.address %>"}, function(data){
-      var lat = data[0].geometry.location.d
-      var lng = data[0].geometry.location.e
-      var marker = { lat: lat, lng: lng, name: '<%= s.name %>'}
-      json_array.push(marker)
-    })
-})
-    </script>
+    
+     
+  
 
   
 
@@ -109,17 +123,24 @@ handler.buildMap({ internal: {id: 'sidebar_builder'}}, function(){
   //   { lat: 50, lng: -85, name: 'Baz', infowindow: "I'm Baz" }
   // ];
 
-  var markers = handler.addMarkers(json_array);
+  
+  var markers = handler.addMarkers([
 
-  _.each(json_array, function(json, index){
-    json.marker = markers[index];
-  });
+          <% @lawyers.each do |l| %>
+           {
+            lat: <%=l.latitude%>, // pulls in the latitude for each marker via ERB
+            lng: <%=l.longitude%> // pulls in the longitude for each marker via ERB
+             
+            }, // don't forget the comma to separate your markers in the array!
+          <% end %>
+        ]);
+        handler.map.centerOn(markers[0]); // centers on the first marker in the array
+      });
 
-  createSidebar(json_array);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 });
-});
+
 
 
 </script>
