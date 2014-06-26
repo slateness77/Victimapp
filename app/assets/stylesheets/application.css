@@ -23,3 +23,17 @@
 	position: relative;
 	
 }
+
+.mapcanvas{
+	float:right;
+	margin-top: -1800px;
+	margin-right: 180px;
+}
+
+.container{
+	font-size: 5px;
+}
+
+h1 {
+	text-align: center;
+}
