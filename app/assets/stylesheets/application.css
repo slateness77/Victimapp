@@ -74,5 +74,21 @@ h1 {
 }
 
 body {
-	background: url("blood.jpg")
+/*	background: url("blood.jpg")*/
+}
+
+.main-container {
+	height: 75%;
+}
+
+.sidebar {
+	background-color: gray;
+	height: 100%;
+	padding: 0;
+}
+
+.map-pane {
+	background-color: lightblue;
+	height: 100%;
+	padding: 0;
 }

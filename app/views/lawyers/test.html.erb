@@ -1,0 +1,54 @@
+<h1>Victim Services</h1>
+
+<div class="main-container">
+	<div class="small-12 large-3 columns sidebar">
+  <%= form_tag("/test", method: "get") do %>
+    <%= label_tag(:zip, "Zip Code:") %>
+    <%= text_field_tag(:zip) %>
+    <%= submit_tag("Update") %>
+  <% end %>
+  <dl class="accordion" data-accordion>
+    <dd class="accordion-navigation">
+      <a href="#panel1">Departments</a>
+      <div id="panel1" class="content active">
+        <ul class="side-nav">
+          <li><%= link_to "Police Departments", test_path(:query => "police", :zip => @zip)%></li>
+          <li><%= link_to "Fire Departments", test_path(:query => "fire", :zip => @zip)%></li>
+          <li><%= link_to "Sheriff Departments", test_path(:query => "sheriff", :zip => @zip)%></li>
+        </ul>
+      </div>
+    </dd>
+    <dd class="accordion-navigation">
+      <a href="#panel2">Accordion 2</a>
+      <div id="panel2" class="content">
+        <ul class="side-nav">
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+        </ul>
+      </div>
+    </dd>
+    <dd class="accordion-navigation">
+      <a href="#panel3">Accordion 3</a>
+      <div id="panel3" class="content">
+        <ul class="side-nav">
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+	</div>
+
+	<div class="small-12 large-9 columns map-pane">
+    <iframe
+      width="100%"
+      height="100%"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCaLQ7b8yoDvrr0E25m0XUIL1q6I1fOeJ0&q=<%= @query+"+near+"+@zip %>"
+    </iframe>
+	</div>
+</div>

@@ -1,8 +1,22 @@
 class LawyersController < ApplicationController
 	include Yelp::V1::Review::Request
   def index
-
     @lawyers = Lawyer.all
+  end
+
+  def test
+    if params["query"]
+      @query = params["query"]
+    else
+      @query = ""
+    end
+
+    if params["zip"]
+      @zip = params["zip"]
+    else
+      @zip = "90071"
+    end
+
   end
 
   def new
