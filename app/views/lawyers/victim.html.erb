@@ -1,20 +1,21 @@
 <h1>Victim Services</h1>
 
 <div class="main-container">
-	<div class="small-12 large-3 columns sidebar">
+	<div class="small-12 large-2 columns sidebar">
   <%= form_tag("/test", method: "get") do %>
-    <%= label_tag(:zip, "Zip Code:") %>
-    <%= text_field_tag(:zip) %>
-    <%= submit_tag("Update") %>
+    <%= label_tag(:zip, "Current Zip Code: "+@zip) %>
+    <%= text_field_tag(:zip, nil, maxlength:5, placeholder:'Enter Zipcode') %>
+    <%= hidden_field_tag(:query, params[:query]) %>
+    <%= submit_tag('Update Zip', class:'button') %>
   <% end %>
   <dl class="accordion" data-accordion>
     <dd class="accordion-navigation">
       <a href="#panel1">Departments</a>
       <div id="panel1" class="content active">
         <ul class="side-nav">
-          <li><%= link_to "Police Departments", test_path(:query => "police", :zip => @zip)%></li>
-          <li><%= link_to "Fire Departments", test_path(:query => "fire", :zip => @zip)%></li>
-          <li><%= link_to "Sheriff Departments", test_path(:query => "sheriff", :zip => @zip)%></li>
+          <li><%= link_to "Police Departments", victim_path(:query => "police", :zip => @zip)%></li>
+          <li><%= link_to "Fire Departments", victim_path(:query => "fire", :zip => @zip)%></li>
+          <li><%= link_to "Sheriff Departments", victim_path(:query => "sheriff", :zip => @zip)%></li>
         </ul>
       </div>
     </dd>
@@ -43,7 +44,7 @@
   </dl>
 	</div>
 
-	<div class="small-12 large-9 columns map-pane">
+	<div class="small-12 large-10 columns map-pane">
     <iframe
       width="100%"
       height="100%"

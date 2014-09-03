@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
     resources :lawyers
     get "/category" => "lawyers#category"
-    get "/test" => "lawyers#test"
+    get "/victim" => "lawyers#victim"
+    root 'lawyers#victim'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -4,7 +4,7 @@ class LawyersController < ApplicationController
     @lawyers = Lawyer.all
   end
 
-  def test
+  def victim
     if params["query"]
       @query = params["query"]
     else
