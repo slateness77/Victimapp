@@ -2,7 +2,7 @@
 
 <div class="main-container">
 	<div class="small-12 large-2 columns sidebar">
-  <%= form_tag("/test", method: "get") do %>
+  <%= form_tag("/victim", method: "get") do %>
     <%= label_tag(:zip, "Current Zip Code: "+@zip) %>
     <%= text_field_tag(:zip, nil, maxlength:5, placeholder:'Enter Zipcode') %>
     <%= hidden_field_tag(:query, params[:query]) %>
