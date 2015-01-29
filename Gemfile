@@ -10,7 +10,6 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'figaro'
 gem 'yelpster'
 gem 'oauth'
-gem 'rails_12factor'
 gem 'yelp'
 gem 'gmaps4rails'
 gem 'geocoder'
@@ -49,3 +48,6 @@ gem 'rspec-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 end
+
+# To load assets properly on heroku
+gem 'rails_12factor', group: :production
